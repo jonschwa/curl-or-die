@@ -25,7 +25,7 @@ public class Stone : MonoBehaviour {
 			moveDirection = transform.TransformDirection(moveDirection);
 			moveDirection *= speed;
 
-		moveDirection.y -= gravity * Time.deltaTime;
+		//moveDirection.y -= gravity * Time.deltaTime;
 		character.Move(moveDirection * Time.deltaTime);
 	}
 }
