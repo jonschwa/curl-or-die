@@ -15,19 +15,17 @@ public class Stone : MonoBehaviour {
 	private bool isMoving = false;
 	private bool endOfMove = false;
 	private bool startMoving = false;
+	private bool finishTurn = false;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
 		collider = GetComponent<BoxCollider>();
-		character = GetComponent<CharacterController>();
+		//character = GetComponent<CharacterController>();
 	}
 
 	void CalculateSpeedAndDirection () {
-		//static for now
-		//moveSpeed = 200.0f;
-
-		//setting this to straight up right now for simplicity
+		//
 		moveDirection = new Vector3(0, 0, 1);
 	}
 		
@@ -36,8 +34,12 @@ public class Stone : MonoBehaviour {
 
 	}
 
-	void Shoot (Vector3 direction, int speed) {
-
+	void Shoot () {
+		if (!isMoving) {
+			CalculateSpeedAndDirection();
+			//moveDirection = transform.TransformDirection (moveDirection);
+			startMoving = true;
+		}
 	}
 
 	void CheckIfEndOfMove() {
@@ -47,14 +49,21 @@ public class Stone : MonoBehaviour {
 	void FinishTurn() {
 
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		if (!isMoving) {
-			CalculateSpeedAndDirection ();
-			//moveDirection = transform.TransformDirection (moveDirection);
-			startMoving = true;
+		//check values and then calculate the speed/direction/rotation (and update UI)
+		if (Input.GetKey ("up")) {
+			print ("shooting!");
+			Shoot();
 		}
+		if (isMoving) {
+			float speed = rb.velocity.magnitude;
+			if (speed == 0) {
+				finishTurn = true;
+			}
+		}
+		
 	}
 
 	void FixedUpdate() {
