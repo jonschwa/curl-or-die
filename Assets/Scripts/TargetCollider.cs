@@ -10,12 +10,17 @@ public class TargetCollider : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.tag == playerTag) {
-			Debug.Log (pointValue + " Points!");
-
+			Debug.Log ("entered " + pointValue);
+			GameController.instance.score += pointValue;
 		}
 	}
 
+	void OnTriggerExit(Collider other) {
+		Debug.Log ("Exited " + pointValue);
+		GameController.instance.score -= pointValue;
+	}
+
 	void OnTriggerStay(Collider other) {
-		Debug.Log ("Staying in " + pointValue);
+		//@todo - can I use this to detect "fully inside" trigger?
 	}
 }

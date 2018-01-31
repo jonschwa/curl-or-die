@@ -14,19 +14,16 @@ public class Stone : MonoBehaviour {
 	public Slider powerSlider;
 
 	private Rigidbody rb;
-	private BoxCollider collider;
 	private CharacterController character;
 	private LineRenderer lr;
 
 	private bool isMoving = false;
-	private bool endOfMove = false;
 	private bool startMoving = false;
-	private bool finishTurn = false;
+	//private bool finishTurn = false;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
-		collider = GetComponent<BoxCollider>();
 	}
 
 	// Update is called once per frame
