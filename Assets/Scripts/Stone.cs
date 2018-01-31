@@ -63,11 +63,8 @@ public class Stone : MonoBehaviour {
 
 	void CalculateSpeedAndDirection () 
 	{
-		var points = new Vector3[2];
 		float h = Input.GetAxisRaw("Horizontal");
 		moveSpeed = powerSlider.value;
-
-		//@todo - use vertical axis to calculate power, and change shoot button to another button
 
 		if (Mathf.Abs (h) >= 1) {
 			xDir += h * 0.01f;

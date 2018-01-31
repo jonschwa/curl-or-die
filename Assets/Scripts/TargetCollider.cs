@@ -8,19 +8,14 @@ public class TargetCollider : MonoBehaviour {
 
 	public int pointValue;
 
-	int ReturnScore()
-	{
-		return pointValue;
-	}
-
 	void OnTriggerEnter(Collider other) {
 		if (other.tag == playerTag) {
-			Debug.Log (ReturnScore () + " Points!");
+			Debug.Log (pointValue + " Points!");
 
 		}
 	}
 
 	void OnTriggerStay(Collider other) {
-		Debug.Log ("Staying in " + ReturnScore ());
+		Debug.Log ("Staying in " + pointValue);
 	}
 }
