@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-	public GameObject stone; 
-	private Vector3 offset; 
+	public GameObject stone;
+	private Vector3 offset;
 
 	void Start () 
 	{
