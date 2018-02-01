@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class TargetCollider : MonoBehaviour {
 
-	public string playerTag = "Player";
-
+	public string stoneTag = "Stone";
 	public int pointValue;
 
-	void OnTriggerEnter(Collider other) {
-		if (other.tag == playerTag) {
-			Debug.Log ("entered " + pointValue);
-			GameController.instance.score += pointValue;
+	//update the score on the stone object any time it changes (enter/exit)
+
+	void OnTriggerEnter(Collider other) 
+	{
+		if (other.tag == stoneTag) {
+			Stone stone = other.transform.gameObject.GetComponent<Stone>();
+			stone.UpdateScore(pointValue);
 		}
 	}
 
-	void OnTriggerExit(Collider other) {
-		Debug.Log ("Exited " + pointValue);
-		GameController.instance.score -= pointValue;
+	void OnTriggerExit(Collider other) 
+	{
+		if (other.tag == stoneTag) {
+			Stone stone = other.transform.gameObject.GetComponent<Stone>();
+			stone.UpdateScore(-pointValue);
+		}
 	}
 
 	void OnTriggerStay(Collider other) {

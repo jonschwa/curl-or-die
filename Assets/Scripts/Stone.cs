@@ -12,34 +12,46 @@ public class Stone : MonoBehaviour {
 	public float moveTime; 
 	private float xDir = 0f;
 	public Slider powerSlider;
+	public int turn = 1;
 
 	private Rigidbody rb;
-	private CharacterController character;
-	private LineRenderer lr;
+	private PlayerController player;
 
+	private int currentScore = 0;
 	private bool isMoving = false;
-	private bool startMoving = false;
-	//private bool finishTurn = false;
+	private bool shot = false;
+	private float speed;
+	private bool finishTurn = false;
 
-	// Use this for initialization
-	void Start () {
+	void Awake () 
+	{
 		rb = GetComponent<Rigidbody>();
+		player = GetComponentInParent<PlayerController>();
 	}
 
-	// Update is called once per frame
 	void Update () 
 	{
 		//check values and then calculate the speed/direction/rotation (and update UI)
-		if (Input.GetKey ("up")) {
-			Shoot();
+		if (!shot) {
+			if (Input.GetKey("q")) {
+				Shoot ();
+			}
 		}
 
-		if (isMoving) {
-			float speed = rb.velocity.magnitude;
+		//@todo - this will be used for collisions (score will change)
+//		speed = rb.velocity.magnitude;
+//		if (speed != 0) {
+//			Debug.Log("Stone " + turn + " Moving!");
+//			isMoving = true;
+//		}
+
+		if (shot && isMoving) {
+			speed = rb.velocity.magnitude;
 			if (speed == 0) {
 				isMoving = false;
-				Debug.Log ("hit up to play again!");
-				GameController.instance.gameOver = true;
+				finishTurn = true;
+				Debug.Log ("Turn " + turn + " Over. Score: " + currentScore);
+				player.UpdateTurnScore(currentScore);
 			}
 		} else {
 			CalculateSpeedAndDirection();
@@ -49,8 +61,8 @@ public class Stone : MonoBehaviour {
 
 	void FixedUpdate() 
 	{
-		if (startMoving && !isMoving) {
-			startMoving = false;
+		if (shot && !isMoving && !finishTurn) {
+			//startMoving = false;
 			Debug.Log ("starting to move!");
 			Debug.Log (moveDirection);
 			rb.AddForce (moveDirection * moveSpeed, ForceMode.Impulse);
@@ -69,10 +81,16 @@ public class Stone : MonoBehaviour {
 		moveDirection = new Vector3 (xDir, 0f, 1f);
 	}
 
+	public void UpdateScore(int scoreChange)
+	{
+		currentScore += scoreChange;
+	}
+
 	void Shoot () 
 	{
-		if (!isMoving) {
-			startMoving = true;
+		if (!shot) {
+			Debug.Log ("Shooting!");
+			shot = true;
 		}
 	}
 }

@@ -13,8 +13,10 @@ public class GameController : MonoBehaviour {
 	public bool gameOver = false;             
 	public float scrollSpeed = -1.5f;
 	public Text scoreText;
+	public int numberOfStones = 3;
+	public int currentTurn = 1;
 
-	void Awake()
+	void Awake() 
 	{
 		if (instance == null)
 			instance = this;
@@ -22,15 +24,22 @@ public class GameController : MonoBehaviour {
 			Destroy (gameObject);
 	}
 
-	void Update()
+	void Update() 
 	{
-		Debug.Log (score);
+		//Debug.Log (score);
 		if (gameOver)
 		{
-			scoreText.text = "Score: " + score;	
+			//scoreText.text = "Score: " + score;	
 			if (Input.GetKey ("up")) {
 				SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 			}
 		}
+	}
+
+	//when the stone has stopped, need to spawn an additional stone 
+	//@todo - have to pass in turn number in a constructor
+	public void SpawnNextStone(GameObject parent)
+	{
+		//
 	}
 }

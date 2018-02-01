@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26931b0b5868a4b8fbc9607e84aa94dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Player
+  stoneTag: Stone
   pointValue: 3
 --- !u!135 &111756545
 SphereCollider:
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26931b0b5868a4b8fbc9607e84aa94dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Player
+  stoneTag: Stone
   pointValue: 2
 --- !u!135 &570831925
 SphereCollider:
@@ -484,6 +484,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &795038646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 795038648}
+  - component: {fileID: 795038647}
+  m_Layer: 0
+  m_Name: Player 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &795038647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 795038646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc59a7593b0bc4fdbb58eb67a773cbba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentRoundScore: 0
+  currentTurnScore: 0
+  scoreText: {fileID: 1881482799}
+  playerNumber: 1
+--- !u!4 &795038648
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 795038646}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.64984, y: 29.643578, z: 66.91738}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1676133749}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &865966412
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,6 +919,8 @@ MonoBehaviour:
   gameOver: 0
   scrollSpeed: -1.5
   scoreText: {fileID: 1881482799}
+  numberOfStones: 3
+  currentTurn: 1
 --- !u!4 &1566439579
 Transform:
   m_ObjectHideFlags: 0
@@ -964,7 +1011,7 @@ GameObject:
   - component: {fileID: 1676133747}
   m_Layer: 0
   m_Name: Stone
-  m_TagString: Player
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1028,12 +1075,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1676133745}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 52.5, y: 2.69, z: -74.9}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 33.85016, y: -26.953577, z: -141.81738}
   m_LocalScale: {x: 5, y: 0.93, z: 5}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 795038648}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1676133750
 Rigidbody:
@@ -1065,6 +1112,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   moveTime: 0
   powerSlider: {fileID: 1870823577}
+  turn: 1
 --- !u!1 &1747297216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,7 +1154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26931b0b5868a4b8fbc9607e84aa94dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Player
+  stoneTag: Stone
   pointValue: 5
 --- !u!135 &1747297219
 SphereCollider:
@@ -1216,7 +1264,7 @@ GameObject:
   - component: {fileID: 1881482800}
   - component: {fileID: 1881482799}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Player 1 Score
   m_TagString: score-ui
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1238,7 +1286,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 20, y: -10}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 281.8, y: 34.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1881482799
 MonoBehaviour:
@@ -1272,7 +1320,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: 0'
+  m_Text: 'Player 1 Score: 0'
 --- !u!222 &1881482800
 CanvasRenderer:
   m_ObjectHideFlags: 0

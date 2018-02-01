@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ui-arrow
   - score-ui
+  - Stone
   layers:
   - Default
   - TransparentFX
