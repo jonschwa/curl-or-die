@@ -21,7 +21,7 @@ public class Stone : MonoBehaviour
 	private Rigidbody rb;
 
 
-	private bool isMoving = false;
+	public bool isMoving = false;
 	private bool shot = false;
 	private float speed;
 	private bool finishTurn = false;
