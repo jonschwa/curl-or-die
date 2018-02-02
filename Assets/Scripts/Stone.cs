@@ -9,7 +9,8 @@ public class Stone : MonoBehaviour
 	public int turn = 1;
 	public float moveTime; 
 	public float moveSpeed;
-	private float xDir = 0f;
+	private float xDir;
+	public int currentScore;
 	public Vector3 moveDirection = new Vector3(0f, 0f, 1f);
 
 	public Vector3 origin;
@@ -19,7 +20,7 @@ public class Stone : MonoBehaviour
 
 	private Rigidbody rb;
 
-	private int currentScore = 0;
+
 	private bool isMoving = false;
 	private bool shot = false;
 	private float speed;
@@ -27,10 +28,11 @@ public class Stone : MonoBehaviour
 
 	void Awake () 
 	{
+		currentScore = 0;
+		xDir = 0f;
 		origin = transform.position;
 		rb = GetComponent<Rigidbody>();
 		player = GetComponentInParent<PlayerController>();
-		Debug.Log (player);
 	}
 
 	void Update () 
@@ -58,7 +60,7 @@ public class Stone : MonoBehaviour
 				isMoving = false;
 				finishTurn = true;
 				Debug.Log ("Turn " + turn + " Over. Score: " + currentScore);
-				player.UpdateTurnScore(currentScore);
+				player.UpdateTurnScore();
 			}
 		} 
 		//or check the inputs for the speed and direction modifiers

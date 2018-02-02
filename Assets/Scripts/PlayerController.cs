@@ -7,8 +7,7 @@ public class PlayerController : MonoBehaviour
 {
 	public int stoneCount;
 	public int playerNumber;
-	public int currentTurnScore = 0;
-	public int currentRoundScore = 0;
+	public int currentRoundScore;
 
 	public Text scoreText;
 	public Stone activeStone;
@@ -17,10 +16,15 @@ public class PlayerController : MonoBehaviour
 	void Awake() {
 		stoneCount = 1;
 	}
-		
-	public void UpdateTurnScore(int scoreChange) {
-		currentTurnScore += scoreChange;
-		UpdateScoreText(currentTurnScore);
+
+	public void UpdateTurnScore() {
+		currentRoundScore = 0;
+		Component[] stones = GetComponentsInChildren<Stone>();
+		Debug.Log(stones);
+		foreach (Stone stone in stones)
+			currentRoundScore += stone.currentScore;
+
+		UpdateScoreText();
 		GameController.instance.SpawnNextStone (this, activeStone);
 	}
 
@@ -31,8 +35,8 @@ public class PlayerController : MonoBehaviour
 		Debug.Log ("# stones: " + stoneCount);
 	}
 
-	void UpdateScoreText(int score) {
-		scoreText.text = "Player " + playerNumber + " Score: " + score;	
+	void UpdateScoreText() {
+		scoreText.text = "Player " + playerNumber + " Score: " + currentRoundScore;	
 	}
 
 
