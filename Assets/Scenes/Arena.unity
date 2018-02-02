@@ -219,8 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26931b0b5868a4b8fbc9607e84aa94dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneTag: Stone
   pointValue: 3
+  stoneTag: Stone
 --- !u!135 &111756545
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -326,7 +326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc4e3507b1ec4eff851b0c468aefc41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stone: {fileID: 1676133745}
+  reset: 0
+  origin: {x: 0, y: 0, z: 0}
+  stoneToFollow: {fileID: 1676133745}
 --- !u!1 &570831922
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,8 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26931b0b5868a4b8fbc9607e84aa94dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneTag: Stone
   pointValue: 2
+  stoneTag: Stone
 --- !u!135 &570831925
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -511,10 +513,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc59a7593b0bc4fdbb58eb67a773cbba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRoundScore: 0
-  currentTurnScore: 0
-  scoreText: {fileID: 1881482799}
+  stoneCount: 0
   playerNumber: 1
+  currentRoundScore: 0
+  scoreText: {fileID: 1881482799}
+  activeStone: {fileID: 1676133751}
 --- !u!4 &795038648
 Transform:
   m_ObjectHideFlags: 0
@@ -916,11 +919,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  gameOver: 0
-  scrollSpeed: -1.5
-  scoreText: {fileID: 1881482799}
-  numberOfStones: 3
   currentTurn: 1
+  gameOver: 0
+  numberOfStones: 3
+  scrollSpeed: -1.5
+  camera: {fileID: 127966494}
+  scoreText: {fileID: 1881482799}
 --- !u!4 &1566439579
 Transform:
   m_ObjectHideFlags: 0
@@ -1108,11 +1112,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7d930ad8c374be48eea64530225c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  moveDirection: {x: 0, y: 0, z: 0}
-  moveTime: 0
-  powerSlider: {fileID: 1870823577}
   turn: 1
+  moveTime: 0
+  moveSpeed: 10
+  currentScore: 0
+  moveDirection: {x: 0, y: 0, z: 0}
+  origin: {x: 0, y: 0, z: 0}
+  powerSlider: {fileID: 1870823577}
+  player: {fileID: 0}
+  active: 1
 --- !u!1 &1747297216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,8 +1162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26931b0b5868a4b8fbc9607e84aa94dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneTag: Stone
   pointValue: 5
+  stoneTag: Stone
 --- !u!135 &1747297219
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -43,10 +43,10 @@ public class Stone : MonoBehaviour
 				Shoot ();
 			}
 		}
-
+			
 		// if the stone is no longer active, we still need to update the score if it changes
+		speed = rb.velocity.magnitude;
 		if (!active) {
-			speed = rb.velocity.magnitude;
 			if (speed != 0) {
 				Debug.Log ("Stone " + turn + " Moving!");
 				isMoving = true;
@@ -55,7 +55,6 @@ public class Stone : MonoBehaviour
 
 		//after the stone has been shot, keep track of the score if its moving
 		if (shot && isMoving) {
-			speed = rb.velocity.magnitude;
 			if (speed == 0) {
 				isMoving = false;
 				finishTurn = true;
