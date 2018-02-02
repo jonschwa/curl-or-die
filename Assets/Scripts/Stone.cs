@@ -4,18 +4,20 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Stone : MonoBehaviour {
-
-	public float moveSpeed;
-	//set this to straight up initially
-	public Vector3 moveDirection = new Vector3(0f, 0f, 1f);
-	public float moveTime; 
-	private float xDir = 0f;
-	public Slider powerSlider;
+public class Stone : MonoBehaviour 
+{
 	public int turn = 1;
+	public float moveTime; 
+	public float moveSpeed;
+	private float xDir = 0f;
+	public Vector3 moveDirection = new Vector3(0f, 0f, 1f);
+
+	public Vector3 origin;
+	public Slider powerSlider;
+	public PlayerController player;
+	public bool active = true;
 
 	private Rigidbody rb;
-	private PlayerController player;
 
 	private int currentScore = 0;
 	private bool isMoving = false;
@@ -25,26 +27,31 @@ public class Stone : MonoBehaviour {
 
 	void Awake () 
 	{
+		origin = transform.position;
 		rb = GetComponent<Rigidbody>();
 		player = GetComponentInParent<PlayerController>();
+		Debug.Log (player);
 	}
 
 	void Update () 
 	{
-		//check values and then calculate the speed/direction/rotation (and update UI)
+		//await input before the stone is shot
 		if (!shot) {
 			if (Input.GetKey("q")) {
 				Shoot ();
 			}
 		}
 
-		//@todo - this will be used for collisions (score will change)
-//		speed = rb.velocity.magnitude;
-//		if (speed != 0) {
-//			Debug.Log("Stone " + turn + " Moving!");
-//			isMoving = true;
-//		}
+		// if the stone is no longer active, we still need to update the score if it changes
+		if (!active) {
+			speed = rb.velocity.magnitude;
+			if (speed != 0) {
+				Debug.Log ("Stone " + turn + " Moving!");
+				isMoving = true;
+			}
+		}
 
+		//after the stone has been shot, keep track of the score if its moving
 		if (shot && isMoving) {
 			speed = rb.velocity.magnitude;
 			if (speed == 0) {
@@ -53,7 +60,9 @@ public class Stone : MonoBehaviour {
 				Debug.Log ("Turn " + turn + " Over. Score: " + currentScore);
 				player.UpdateTurnScore(currentScore);
 			}
-		} else {
+		} 
+		//or check the inputs for the speed and direction modifiers
+		else {
 			CalculateSpeedAndDirection();
 		}
 		
@@ -61,8 +70,8 @@ public class Stone : MonoBehaviour {
 
 	void FixedUpdate() 
 	{
+		//give the initial shot of force when the stone is launched
 		if (shot && !isMoving && !finishTurn) {
-			//startMoving = false;
 			Debug.Log ("starting to move!");
 			Debug.Log (moveDirection);
 			rb.AddForce (moveDirection * moveSpeed, ForceMode.Impulse);
@@ -72,12 +81,15 @@ public class Stone : MonoBehaviour {
 
 	void CalculateSpeedAndDirection () 
 	{
+		//horizontal currently on the arrows @todo - make a UI element
 		float h = Input.GetAxisRaw("Horizontal");
 		moveSpeed = powerSlider.value;
 
 		if (Mathf.Abs (h) >= 1) {
 			xDir += h * 0.01f;
 		}
+		//the z component of movement is always ahead currently 
+		//@todo - might want to make this just oriented towards the target
 		moveDirection = new Vector3 (xDir, 0f, 1f);
 	}
 
