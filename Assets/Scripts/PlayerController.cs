@@ -17,10 +17,9 @@ public class PlayerController : MonoBehaviour
 		stoneCount = 1;
 	}
 
-	public void UpdateTurnScore() {
+	public void NextTurn() {
 		currentRoundScore = 0;
 		Component[] stones = GetComponentsInChildren<Stone>();
-		Debug.Log(stones);
 		foreach (Stone stone in stones)
 			currentRoundScore += stone.currentScore;
 

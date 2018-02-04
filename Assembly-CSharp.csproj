@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\Stone.cs" />
      <Compile Include="Assets\Scripts\StoneSoundScript.cs" />
      <Compile Include="Assets\Scripts\TargetCollider.cs" />
+     <Compile Include="Assets\StoneControls.cs" />
      <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
  <Reference Include="UnityEngine.UIAutomation">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>

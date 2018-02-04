@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
 
 	public Camera camera;
 	public Text scoreText;
+	public GameObject helpUi;
 	public static GameController instance = null;
 
 	void Awake() 
@@ -27,6 +28,11 @@ public class GameController : MonoBehaviour
 
 	void Update() 
 	{
+		if (currentTurn == 1) {
+			if (Input.anyKey){
+				HideInitUI();
+			}
+		}
 		if (gameOver)
 		{
 			if (Input.GetKey ("up")) {
@@ -42,7 +48,6 @@ public class GameController : MonoBehaviour
 		//copy a stone, set position, set parent, update to be the parent's current active stone, and reset the camera
 		if (player.stoneCount < numberOfStones) {
 			Stone newStone = Instantiate (OGstone, OGstone.origin, Quaternion.identity);
-			OGstone.active = false;
 			newStone.turn++;
 			newStone.player = player;
 			newStone.transform.SetParent (player.transform);
@@ -66,5 +71,10 @@ public class GameController : MonoBehaviour
 		//@todo do something interesting
 		gameOver = true;
 		Debug.Log("Press up to play again");
+	}
+
+	void HideInitUI()
+	{
+		helpUi.SetActive(false);
 	}
 }

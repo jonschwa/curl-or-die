@@ -23,7 +23,10 @@ GameObject:
   - component: {fileID: 23729133494339872}
   - component: {fileID: 54746727786626698}
   - component: {fileID: 114936868372229404}
+  - component: {fileID: 114906147350669886}
   - component: {fileID: 65345826070179400}
+  - component: {fileID: 82539713079307704}
+  - component: {fileID: 114517041427402224}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Stone
@@ -37,9 +40,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1236944219683278}
-  m_LocalRotation: {x: 0.000000007632467, y: -0.0015938687, z: -0.000000064006784,
-    w: 0.99999875}
-  m_LocalPosition: {x: 33.88272, y: -27.213577, z: 39.783394}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 33.85016, y: -26.953577, z: -141.81738}
   m_LocalScale: {x: 5, y: 0.93, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -113,6 +115,110 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 2.0000002, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!82 &82539713079307704
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1236944219683278}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: afbe2fe179e3b45a890b38b7fba5843c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 1
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &114517041427402224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1236944219683278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9937cde1957ed4f81864914bfa21f9bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerSliderMoveDir: 0
+  powerSlider: {fileID: 0}
+--- !u!114 &114906147350669886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1236944219683278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e518f4b072f44348f431aeb931743b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114936868372229404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,8 +230,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7d930ad8c374be48eea64530225c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 9.18316
-  moveDirection: {x: 0, y: 0, z: 1}
-  moveTime: 0
-  powerSlider: {fileID: 0}
   turn: 1
+  moveSpeed: 10
+  currentScore: 0
+  shot: 0
+  isMoving: 0
+  moveDirection: {x: 0, y: 0, z: 0}
+  origin: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
+  active: 1

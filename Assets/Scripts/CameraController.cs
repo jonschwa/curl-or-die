@@ -13,7 +13,6 @@ public class CameraController : MonoBehaviour
 	void Awake () 
 	{
 		origin = transform.position;
-		Debug.Log ("camera origin " + origin);
 		offset = transform.position - stoneToFollow.transform.position;
 	}
 
@@ -26,7 +25,6 @@ public class CameraController : MonoBehaviour
 
 	public void ResetCamera(GameObject stone)
 	{
-		Debug.Log ("resetting camera to " + origin);
 		transform.position = origin;
 		stoneToFollow = stone;
 	}	
