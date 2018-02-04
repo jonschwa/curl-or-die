@@ -5,21 +5,24 @@ using System.Collections.Generic;
 public class StoneSoundScript : MonoBehaviour
 
 {
-	AudioSource StoneAudioSource;
+	AudioSource audio;
 	Stone stone;
 
 	void Awake()
 	{
 		stone = GetComponent<Stone>();
-	}
+		audio = GetComponent<AudioSource>();	}
 
 	void Update ()
 	{
+		//only play if stone is moving and audio is not currently playing
 		if (stone.isMoving) {
-			StoneAudioSource.Play ();
+			if(!audio.isPlaying)
+				audio.Play ();
 		}
 		else {
-			StoneAudioSource.Stop();
+			if(audio.isPlaying)
+				audio.Stop();
 		}
 	}
 

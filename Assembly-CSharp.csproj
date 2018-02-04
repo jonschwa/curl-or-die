@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\InnerRing.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Stone.cs" />
+     <Compile Include="Assets\Scripts\StoneSoundScript.cs" />
      <Compile Include="Assets\Scripts\TargetCollider.cs" />
      <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
  <Reference Include="UnityEngine.UIAutomation">
