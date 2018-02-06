@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Knight\scripts\rotator.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\InnerRing.cs" />
@@ -59,6 +60,9 @@
      <Compile Include="Assets\Scripts\StoneSoundScript.cs" />
      <Compile Include="Assets\Scripts\TargetCollider.cs" />
      <Compile Include="Assets\StoneControls.cs" />
+     <None Include="Assets\Knight\shaders\particledistort.shader" />
+     <None Include="Assets\Knight\shaders\clothshader.shader" />
+     <None Include="Assets\Knight\shaders\reflectAdd.shader" />
      <None Include="Assets\Horse\SoftAlpha.shader" />
      <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
  <Reference Include="UnityEngine.UIAutomation">
